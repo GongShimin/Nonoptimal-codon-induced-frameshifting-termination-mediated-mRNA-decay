@@ -22,15 +22,15 @@ def cut_text(text,lenth):
     textArr = re.findall('.{'+str(lenth)+'}', text) 
     return textArr
 
-fw = open("reference_out-of-frame_peptide.fa","a")  ### output search protein sequence file (0,+1,-1) frame protein
-fr = open("CDS_DNA_human.fa","r")                   ### input CDS_DNA_human.fa (need search protein) 
+fw = open("reference_out-of-frame_peptide.fa","a")  
+fr = open("CDS_DNA_human.fa","r")                 
 
 dic_cds={}
 for line in fr:
     if ">" in line:
         name=line.strip().split(">")[1]
     else:
-        seq=line.strip()[100:] ### remove 5'utr keep 3'utr 100 bp
+        seq=line.strip()[100:] 
         dic_cds[name]=seq
 
 from collections import defaultdict
