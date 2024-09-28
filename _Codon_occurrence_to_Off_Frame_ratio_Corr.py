@@ -1,5 +1,3 @@
-#The correlation coefficient between 
-#codon content and Off frame ratio
 ###python _Codon_occurrence_to_Off_Frame_ratio_Corr.py -r reference -i off-frame_data -o outputfile
 import pandas as pd
 import csv
@@ -29,7 +27,7 @@ def process_data(input_longest_file,fsr_file):
         lines = f.readlines()
         for i in range(len(lines)):
             if lines[i][0] == '>':
-                gene_name = lines[i][1:].strip().split("_")[0]#.split("-")[1]
+                gene_name = lines[i][1:].strip().split("_")[0]
                 seq_dict[gene_name] = ''
             else:
                 seq_dict[gene_name] += lines[i].strip()
@@ -52,7 +50,7 @@ def process_data(input_longest_file,fsr_file):
     with open(fsr_file, 'r') as file:
         for i, line in enumerate(file):
             a=line.strip().split("\t")
-            name=a[0]#.split("-")[1]#.split(":")[1]#.upper()
+            name=a[0]#.split("-")[1]#.split(":")[1]
             frs=float(a[1])
             dic_frs[name]=frs
     header = ["NAME","lenth","data"]
