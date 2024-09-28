@@ -2,12 +2,11 @@
 from collections import defaultdict
 import sys
 
-# Check the number of command line arguments
 if len(sys.argv) < 4:
     sys.exit("Usage: python _decode_rate_RFS.py inputfile reference 2 or 0 or 1")
 
 input_file_bedgraph = sys.argv[1] + ".bedgraph"
-longest_reference = sys.argv[2] + ".fa"   #bowtie reference
+longest_reference = sys.argv[2] + ".fa"   
 out = int(sys.argv[3])
 
 if out == 2:
@@ -57,7 +56,7 @@ with open(input_file_bedgraph, 'r') as file1:
         a = line.strip().split("\t")
         name = a[0].split("_")[0]
         x = int(a[2]) - int(a[1])
-        if name in dic_cds and a[3] != "0" and int(a[1]) >= 130 and x >= 2:#reference have 100 utr on 3'and 5' end
+        if name in dic_cds and a[3] != "0" and int(a[1]) >= 130 and x >= 2:
             for count in range(x):
                 pos = str(int(a[1]) + count)
                 rfs = str(a[3])
